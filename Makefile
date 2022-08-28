@@ -14,6 +14,7 @@
 # We distinguish between repository clones and source packages by the existence
 # of make-files.sh scripts in various subdirectories.
 
+SHELL := /bin/bash
 
 all:
 	if [ ! -f examples/hid-mouse/firmware/Makefile ]; then \
