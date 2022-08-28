@@ -89,11 +89,11 @@ uchar   i;
      * That's the way we need D+ and D-. Therefore we don't need any
      * additional hardware initialization.
      */
-    TCCR2 = 9 | (1 << COM20);
-    OCR2 = 3;               /* should give F_CPU/8 clock */
+  //  TCCR2 = 9 | (1 << COM20);
+  //  OCR2 = 3;               /* should give F_CPU/8 clock */
 
-    DDRB = (1 << 2) | (1 << 3);
-    TCCR0 = 3;              /* 1/64 prescaler */
+  //  DDRB = (1 << 2) | (1 << 3);
+  //  TCCR0 = 3;              /* 1/64 prescaler */
     usbInit();
     usbDeviceDisconnect();  /* enforce re-enumeration, do this while interrupts are disabled! */
     i = 0;
@@ -107,7 +107,8 @@ uchar   i;
     for(;;){                /* main event loop */
         wdt_reset();
         usbPoll();
-        cli();              /* disable interrupts for some cycles, use other cli as nop */
+//        cli();              /* disable interrupts for some cycles, use other cli as nop */
+/*
         cli();
         cli();
         cli();
@@ -122,6 +123,7 @@ uchar   i;
         cli();
         cli();
         sei();
+*/
     }
 }
 
