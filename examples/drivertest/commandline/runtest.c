@@ -106,11 +106,13 @@ int             cnt, vid, pid, i, j, r;
             cnt = libusb_control_transfer(handle, LIBUSB_REQUEST_TYPE_VENDOR | LIBUSB_RECIPIENT_DEVICE | LIBUSB_ENDPOINT_IN, CUSTOM_RQ_SET_OSCCAL, osccal, 0, (unsigned char *)txBuffer, 0, 5000);
             if(cnt < 0){
                 fprintf(stderr, "\nUSB error setting osccal: %s\n", libusb_strerror(cnt));
+                return -1;
             }
         }else{
             cnt = libusb_control_transfer(handle, LIBUSB_REQUEST_TYPE_VENDOR | LIBUSB_RECIPIENT_DEVICE | LIBUSB_ENDPOINT_IN, CUSTOM_RQ_GET_OSCCAL, 0, 0, (unsigned char *)rxBuffer, 1, 5000);
             if(cnt < 0){
                 fprintf(stderr, "\nUSB error getting osccal: %s\n", libusb_strerror(cnt));
+                return -1;
             }else{
                 printf("osccal = %d\n", (unsigned char)rxBuffer[0]);
             }
@@ -126,7 +128,7 @@ int             cnt, vid, pid, i, j, r;
             cnt = libusb_control_transfer(handle, LIBUSB_REQUEST_TYPE_VENDOR | LIBUSB_RECIPIENT_DEVICE | LIBUSB_ENDPOINT_OUT, CUSTOM_RQ_SET_DATA, 0, 0, (unsigned char *)txBuffer, sizeof(txBuffer), 5000);
             if(cnt < 0){
                 fprintf(stderr, "\nUSB tx error in iteration %d: %s\n", i, libusb_strerror(cnt));
-                break;
+                return -1;
             }else if(cnt != sizeof(txBuffer)){
                 fprintf(stderr, "\nerror in iteration %d: %d bytes sent instead of %d\n", i, cnt, (int)sizeof(txBuffer));
                 break;
