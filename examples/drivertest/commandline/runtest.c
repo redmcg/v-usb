@@ -83,7 +83,7 @@ int main(int argc, char **argv)
 libusb_device_handle  *handle = NULL;
 const uchar     rawVid[2] = {USB_CFG_VENDOR_ID}, rawPid[2] = {USB_CFG_DEVICE_ID};
 char            vendor[] = {USB_CFG_VENDOR_NAME, 0}, product[] = {USB_CFG_DEVICE_NAME, 0};
-char            txBuffer[64], rxBuffer[64];
+char            txBuffer[BUFFER_SZ], rxBuffer[BUFFER_SZ];
 int             cnt, vid, pid, i, j, r;
 
     r = libusb_init(NULL);

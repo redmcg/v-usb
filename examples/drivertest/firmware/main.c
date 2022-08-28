@@ -37,7 +37,7 @@ uchar   lastTimer0Value;
 /* ----------------------------- USB interface ----------------------------- */
 /* ------------------------------------------------------------------------- */
 
-static uchar    dataBuffer[64];
+static uchar    dataBuffer[BUFFER_SZ];
 static uchar    writeIndex;
 
 uchar usbFunctionWrite(uchar *data, uchar len)

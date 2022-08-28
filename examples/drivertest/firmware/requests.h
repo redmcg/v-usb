@@ -25,4 +25,6 @@
 #define CUSTOM_RQ_SET_OSCCAL    3
 #define CUSTOM_RQ_GET_OSCCAL    4
 
+#define BUFFER_SZ               64
+
 #endif /* __REQUESTS_H_INCLUDED__ */
