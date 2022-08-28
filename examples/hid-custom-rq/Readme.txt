@@ -2,6 +2,9 @@ This is the Readme file for the hid-custom-rq example. This is basically the
 same as the custom-class example, except that the device conforms to the USB
 HID class.
 
+You'll need write access to the usb device. Run something like:
+sudo setfacl -m u:$(whoami):rw /dev/bus/usb/$(lsusb -d 16c0:05df | awk '{ print $2 "/" $4 }' | sed 's/://')
+
 
 WHAT IS DEMONSTRATED?
 =====================
