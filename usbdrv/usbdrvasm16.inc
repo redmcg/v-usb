@@ -103,14 +103,15 @@ haveTwoBitsK:
     ldi     x3, 1<<4        ;[8] [rx loop init] first sample is inverse bit, compensate that
     push    x4              ;[9] == leap
 
-    in      x1, USBIN       ;[11] <-- sample bit 0
-    andi    x1, USBMASK     ;[12]
-    bst     x1, USBMINUS    ;[13]
-    bld     shift, 7        ;[14]
-    push    cnt             ;[15]
-    ldi     leap, 0         ;[17] [rx loop init]
-    ldi     cnt, USB_BUFSIZE;[18] [rx loop init]
-    rjmp    rxbit1          ;[19] arrives at [21]
+    nop                     ;[11]
+    in      x1, USBIN       ;[12] <-- sample bit 0
+    andi    x1, USBMASK     ;[13]
+    bst     x1, USBMINUS    ;[14]
+    bld     shift, 7        ;[15]
+    push    cnt             ;[16]
+    ldi     leap, 0         ;[18] [rx loop init]
+    ldi     cnt, USB_BUFSIZE;[19] [rx loop init]
+    rjmp    rxbit1          ;[20] arrives at [22]
 
 ;----------------------------------------------------------------------------
 ; Receiver loop (numbers in brackets are cycles within byte after instr)
