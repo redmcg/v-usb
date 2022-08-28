@@ -17,7 +17,7 @@ different port or bit, change the macros below:
 */
 #define LED_PORT_DDR        DDRB
 #define LED_PORT_OUTPUT     PORTB
-#define LED_BIT             0
+#define LED_BIT             5
 
 #include <avr/io.h>
 #include <avr/wdt.h>
